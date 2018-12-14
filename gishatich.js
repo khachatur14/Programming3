@@ -1,4 +1,5 @@
-class Gishatich extends Xotaker{
+var Xotaker = require("./grass_eater.js");
+module.exports = class Gishatich extends Xotaker{
     constructor(x, y) {
         super(x, y);
         super.index = 3;
@@ -6,7 +7,7 @@ class Gishatich extends Xotaker{
     }
     utel() {
         var datarkVandakner = this.yntrelVandak(2);
-        var norVandak = random(datarkVandakner);
+        var norVandak = this.random(datarkVandakner);
         if (norVandak) {
             matrix[this.y][this.x] = 0;
             this.x = norVandak[0];

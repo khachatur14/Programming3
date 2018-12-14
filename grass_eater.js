@@ -1,4 +1,5 @@
-class Xotaker extends LivingCreature{
+var LivingCreature = require("./living_creature.js");
+module.exports = class Xotaker extends LivingCreature{
     constructor(x, y) {
         super(x, y, 2);
         this.energy = 5;
@@ -22,7 +23,7 @@ class Xotaker extends LivingCreature{
     }
     bazmanal() {
         var datarkVandakner = this.yntrelVandak(0);
-        var norVandak = random(datarkVandakner);
+        var norVandak = this.random(datarkVandakner);
         if (norVandak && this.energy >= 10) {
             var norx = norVandak[0];
             var nory = norVandak[1];
@@ -34,7 +35,7 @@ class Xotaker extends LivingCreature{
     }
     sharjvel() {
         var datarkVandakner = this.yntrelVandak(0);
-        var norVandak = random(datarkVandakner);
+        var norVandak = this.random(datarkVandakner);
         if (norVandak) {
             matrix[this.y][this.x] = 0;
             this.x = norVandak[0];
@@ -46,7 +47,7 @@ class Xotaker extends LivingCreature{
     }
     utel() {
         var datarkVandakner = this.yntrelVandak(1);
-        var norVandak = random(datarkVandakner);
+        var norVandak = this.random(datarkVandakner);
         if (norVandak) {
             matrix[this.y][this.x] = 0;
             this.x = norVandak[0];

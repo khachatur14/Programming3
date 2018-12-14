@@ -1,4 +1,5 @@
-class Creater extends LivingCreature{
+var LivingCreature = require("./living_creature.js");
+module.exports = class Creater extends LivingCreature{
     constructor(x, y) {
         super(x, y, 4);
         this.energy = 25;
@@ -32,7 +33,7 @@ class Creater extends LivingCreature{
     }
     poxakerpel() {
         var datark = this.yntrelVandak(0)
-        var norVandak = random(datark);
+        var norVandak = this.random(datark);
         if (norVandak) {
             var norx = norVandak[0];
             var nory = norVandak[1];
@@ -65,7 +66,7 @@ class Creater extends LivingCreature{
     bazmanal() {
         this.multiply++
         var datarkVandakner = this.yntrelVandak(0);
-        var norVandak = random(datarkVandakner);
+        var norVandak = this.random(datarkVandakner);
         if (norVandak && this.multiply >= 150) {
             var norx = norVandak[0];
             var nory = norVandak[1];
@@ -77,7 +78,7 @@ class Creater extends LivingCreature{
     }
     sharjvel() {
         var datarkVandakner = this.yntrelVandak(0);
-        var norVandak = random(datarkVandakner);
+        var norVandak = this.random(datarkVandakner);
         if (norVandak) {
             matrix[this.y][this.x] = 0;
             this.x = norVandak[0];

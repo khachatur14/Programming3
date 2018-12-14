@@ -1,12 +1,13 @@
-class Amenaker extends Xotaker{
+var Xotaker = require("./grass_eater.js");
+module.exports = class Amenaker extends Xotaker{
     constructor(x, y) {
         super(x, y);
         super.index = 5;
-        this.energy = 5;
+        this.energy = 35;
         this.count = [0, 0, 0]
     }
     utel() {
-        var norVandak = random(this.directions);
+        var norVandak = this.random(this.directions);
         if (this.energy >= 0 && norVandak[0] >= 0 && norVandak[1] >= 0 && norVandak[0] < matrix[0].length && norVandak[1] < matrix.length && matrix[norVandak[1]][norVandak[0]] != 0 && matrix[norVandak[1]][norVandak[0]] != 4) {
             matrix[this.y][this.x] = 0;
             this.x = norVandak[0];
@@ -51,7 +52,7 @@ class Amenaker extends Xotaker{
     }
     mahanal() {
         if (this.energy <= 0) {
-            var norVandak = random(this.yntrelVandak(0));
+            var norVandak = this.random(this.yntrelVandak(0));
             if (norVandak) {
                 if (this.count[1] > 0) {
                     matrix[norVandak[1]][norVandak[0]] = 2;

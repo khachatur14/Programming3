@@ -1,4 +1,4 @@
-class LivingCreature {
+module.exports = class LivingCreature {
     constructor(x, y, index){
         this.x = x;
         this.y = y;
@@ -15,6 +15,10 @@ class LivingCreature {
            [this.x + 1, this.y + 1]
        ];
  
+    }
+    random(arr){
+        var n = Math.floor(Math.random()*arr.length);
+        return arr[n];
     }
     chooseCell(ch) {
         var found = [];
