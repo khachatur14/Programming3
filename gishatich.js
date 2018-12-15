@@ -3,7 +3,7 @@ module.exports = class Gishatich extends Xotaker{
     constructor(x, y) {
         super(x, y);
         super.index = 3;
-        this.energy = 20;
+        super.energy = 20;
     }
     utel() {
         var datarkVandakner = this.yntrelVandak(2);

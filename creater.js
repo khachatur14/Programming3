@@ -1,4 +1,9 @@
 var LivingCreature = require("./living_creature.js");
+var Grass = require("./grass.js");
+var Xotaker = require("./grass_eater.js");
+var Gishatich = require("./gishatich.js");
+var Amenaker = require("./amenaker.js");
+
 module.exports = class Creater extends LivingCreature{
     constructor(x, y) {
         super(x, y, 4);
@@ -13,6 +18,9 @@ module.exports = class Creater extends LivingCreature{
             [this.x, this.y + 2],
             [this.x + 2, this.y + 2]
         ];
+    }
+    multiply(){
+        
     }
     stanalNorKordinatner() {
         this.directions = [
@@ -42,7 +50,7 @@ module.exports = class Creater extends LivingCreature{
                     matrix[nory][norx] = 5;
                     var nor = new Amenaker(norx, nory);
                     amenakerArr.push(nor);
-                    this.energy--
+                    this.energy--;
                 }
             }
             else if (xotakerArr.length <= 0) {
@@ -58,6 +66,14 @@ module.exports = class Creater extends LivingCreature{
                     matrix[nory][norx] = 3;
                     var nor = new Gishatich(norx, nory);
                     gishatichArr.push(nor);
+                    this.energy--;
+                }
+            }
+            else if (grassArr.length <= 0) {
+                for (var i = 0; i < datark.length; i++) {
+                    matrix[nory][norx] = 1;
+                    var nor = new Grass(norx, nory);
+                    grassArr.push(nor);
                     this.energy--;
                 }
             }

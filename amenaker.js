@@ -3,8 +3,8 @@ module.exports = class Amenaker extends Xotaker{
     constructor(x, y) {
         super(x, y);
         super.index = 5;
-        this.energy = 35;
-        this.count = [0, 0, 0]
+        super.energy = 35;
+        this.count = [0, 0, 0];
     }
     utel() {
         var norVandak = this.random(this.directions);
@@ -19,8 +19,7 @@ module.exports = class Amenaker extends Xotaker{
                         break;
                     }
                 }
-                matrix[this.y][this.x] = 5;
-                this.energy++;
+                matrix[this.y][this.x] = this.index;
                 this.count[0]++;
             }
             else if (matrix[this.y][this.x] == 2) {
@@ -30,8 +29,7 @@ module.exports = class Amenaker extends Xotaker{
                         break;
                     }
                 }
-                matrix[this.y][this.x] = 5;
-                this.energy++;
+                matrix[this.y][this.x] = this.index;
                 this.count[1]++;
             }
             else if (matrix[this.y][this.x] == 3) {
@@ -41,10 +39,10 @@ module.exports = class Amenaker extends Xotaker{
                         break;
                     }
                 }
-                matrix[this.y][this.x] = 5;
-                this.energy++;
+                matrix[this.y][this.x] = this.index;
                 this.count[2]++;
             }
+            this.energy++;
         }
         else {
             this.sharjvel();
@@ -52,7 +50,7 @@ module.exports = class Amenaker extends Xotaker{
     }
     mahanal() {
         if (this.energy <= 0) {
-            var norVandak = this.random(this.yntrelVandak(0));
+            var norVandak = this.random(this.yntrelVandak);
             if (norVandak) {
                 if (this.count[1] > 0) {
                     matrix[norVandak[1]][norVandak[0]] = 2;
@@ -62,7 +60,7 @@ module.exports = class Amenaker extends Xotaker{
                 else if (this.count[2] > 0) {
                     matrix[norVandak[1]][norVandak[0]] = 3;
                     var nor = new Gishatich(norVandak[0], norVandak[1]);
-                        gishatichArr.push(nor);
+                    gishatichArr.push(nor);
                 }
             }
             for (var i in amenakerArr) {

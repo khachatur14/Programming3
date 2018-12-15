@@ -40,7 +40,7 @@ module.exports = class Xotaker extends LivingCreature{
             matrix[this.y][this.x] = 0;
             this.x = norVandak[0];
             this.y = norVandak[1];
-            matrix[this.y][this.x] = 2;
+            matrix[this.y][this.x] = this.index;
             this.energy--;
         }
 
