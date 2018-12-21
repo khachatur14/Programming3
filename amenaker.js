@@ -1,51 +1,45 @@
+var LivingCreature = require("./living_creature.js");
 var Xotaker = require("./grass_eater.js");
 module.exports = class Amenaker extends Xotaker{
     constructor(x, y) {
         super(x, y);
         super.index = 5;
         super.energy = 35;
-        this.count = [0, 0, 0];
+        //super.count = [0, 0, 0];
     }
-    utel() {
-        var norVandak = this.random(this.directions);
-        if (this.energy >= 0 && norVandak[0] >= 0 && norVandak[1] >= 0 && norVandak[0] < matrix[0].length && norVandak[1] < matrix.length && matrix[norVandak[1]][norVandak[0]] != 0 && matrix[norVandak[1]][norVandak[0]] != 4) {
+    sharjvel() {
+        var datarkVandakner = this.yntrelVandak(0);
+        var norVandak = this.random(datarkVandakner);
+        if (norVandak) {
             matrix[this.y][this.x] = 0;
             this.x = norVandak[0];
             this.y = norVandak[1];
-            if (matrix[this.y][this.x] == 1) {
+            matrix[this.y][this.x] = this.index;
+            this.energy--;
+        }
+
+    }
+    utel() {
+        var datarkVandakner = [this.yntrelVandak(1), this.yntrelVandak(2), this.yntrelVandak(3)];
+        for(var i = 0; i < datarkVandakner.length; i++){
+            var norVandak = this.random(datarkVandakner[i]);
+            if (norVandak) {
+                matrix[this.y][this.x] = 0;
+                this.x = norVandak[0];
+                this.y = norVandak[1];
+                matrix[this.y][this.x] = 5;
                 for (var i in grassArr) {
                     if (grassArr[i].x == this.x && grassArr[i].y == this.y) {
                         grassArr.splice(i, 1);
                         break;
                     }
                 }
-                matrix[this.y][this.x] = this.index;
-                this.count[0]++;
+                this.energy++;
+                break;
             }
-            else if (matrix[this.y][this.x] == 2) {
-                for (var i in xotakerArr) {
-                    if (xotakerArr[i].x == this.x && xotakerArr[i].y == this.y) {
-                        xotakerArr.splice(i, 1);
-                        break;
-                    }
-                }
-                matrix[this.y][this.x] = this.index;
-                this.count[1]++;
+            else if(i == 2){
+                this.sharjvel();
             }
-            else if (matrix[this.y][this.x] == 3) {
-                for (var i in gishatichArr) {
-                    if (gishatichArr[i].x == this.x && gishatichArr[i].y == this.y) {
-                        gishatichArr.splice(i, 1);
-                        break;
-                    }
-                }
-                matrix[this.y][this.x] = this.index;
-                this.count[2]++;
-            }
-            this.energy++;
-        }
-        else {
-            this.sharjvel();
         }
     }
     mahanal() {

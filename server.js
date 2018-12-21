@@ -99,7 +99,6 @@ io.on('connection', function () {
         }
         for (var i in createrArr) {
             createrArr[i].sharjvel();
-            createrArr[i].bazmanal();
             createrArr[i].poxakerpel();
             createrArr[i].mahanal();
         }
@@ -109,7 +108,8 @@ io.on('connection', function () {
             amenakerArr[i].mahanal();
         }
         io.sockets.emit("matrix", matrix);
+        io.sockets.emit("amenaker", amenakerArr);
     }
-    setInterval(generateMatrix, 30000);
+    //setInterval(generateMatrix, 30000);
     setInterval(drawServerayin, 400);
 })

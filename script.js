@@ -46,6 +46,9 @@ function drawMatrix(matrix) {
         }
     }
 }
-
+function cons(arr){
+    console.log(arr);
+}
 socket.on("matrix",drawMatrix);
+socket.on("amenaker", cons);
 

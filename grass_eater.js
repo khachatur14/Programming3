@@ -27,7 +27,7 @@ module.exports = class Xotaker extends LivingCreature{
         if (norVandak && this.energy >= 10) {
             var norx = norVandak[0];
             var nory = norVandak[1];
-            matrix[nory][norx] = 2;
+            matrix[nory][norx] = this.index;
             var norXotaker = new Xotaker(norx, nory);
             xotakerArr.push(norXotaker);
             this.energy = 1;

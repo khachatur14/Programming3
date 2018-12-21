@@ -19,9 +19,6 @@ module.exports = class Creater extends LivingCreature{
             [this.x + 2, this.y + 2]
         ];
     }
-    multiply(){
-        
-    }
     stanalNorKordinatner() {
         this.directions = [
             [this.x - 2, this.y - 2],
@@ -77,19 +74,6 @@ module.exports = class Creater extends LivingCreature{
                     this.energy--;
                 }
             }
-        }
-    }
-    bazmanal() {
-        this.multiply++
-        var datarkVandakner = this.yntrelVandak(0);
-        var norVandak = this.random(datarkVandakner);
-        if (norVandak && this.multiply >= 150) {
-            var norx = norVandak[0];
-            var nory = norVandak[1];
-            matrix[nory][norx] = 4;
-            var nor = new Creater(norx, nory);
-            createrArr.push(nor);
-            this.multiply = 0
         }
     }
     sharjvel() {
