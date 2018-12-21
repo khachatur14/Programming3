@@ -47,7 +47,8 @@ module.exports = class Creater extends LivingCreature{
                     matrix[nory][norx] = 5;
                     var nor = new Amenaker(norx, nory);
                     amenakerArr.push(nor);
-                    created[5]++;
+                    stat.amenaker.created++;
+                    stat.amenaker.count++;
                     this.energy--;
                 }
             }
@@ -56,7 +57,8 @@ module.exports = class Creater extends LivingCreature{
                     matrix[nory][norx] = 2;
                     var nor = new Xotaker(norx, nory);
                     xotakerArr.push(nor);
-                    created[2]++;
+                    stat.grassEater.created++;
+                    stat.grassEater.count++;
                     this.energy--;
                 }
             }
@@ -65,7 +67,8 @@ module.exports = class Creater extends LivingCreature{
                     matrix[nory][norx] = 3;
                     var nor = new Gishatich(norx, nory);
                     gishatichArr.push(nor);
-                    created[3]++;
+                    stat.gishatich.created++;
+                    stat.gishatich.count++;
                     this.energy--;
                 }
             }
@@ -74,7 +77,8 @@ module.exports = class Creater extends LivingCreature{
                     matrix[nory][norx] = 1;
                     var nor = new Grass(norx, nory);
                     grassArr.push(nor);
-                    created[0]++;
+                    stat.grass.created++;
+                    stat.grass.count++;
                     this.energy--;
                 }
             }
@@ -94,7 +98,8 @@ module.exports = class Creater extends LivingCreature{
         for (var i in createrArr) {
             if (this.energy <= 0 && createrArr[i].x == this.x && createrArr[i].y == this.y) {
                 createrArr.splice(i, 1);
-                died[4]++;
+                stat.creater.count--;
+                stat.creater.died++;
                 matrix[this.y][this.x] = 0;
                 break;
             }

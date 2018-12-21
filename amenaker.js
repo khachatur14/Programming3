@@ -5,7 +5,7 @@ module.exports = class Amenaker extends Xotaker{
         super(x, y);
         super.index = 5;
         super.energy = 35;
-        //super.count = [0, 0, 0];
+        this.count = [0, 0, 0];
     }
     sharjvel() {
         var datarkVandakner = this.yntrelVandak(0);
@@ -31,8 +31,11 @@ module.exports = class Amenaker extends Xotaker{
                 var arr = [grassArr, xotakerArr, gishatichArr];
                 for (var j in arr[i]) {
                     if (arr[i][j].x == this.x && arr[i][j].y == this.y) {
-                        arr.splice(i, 1);
-                        eated[this.index]++;
+                        arr[i].splice(i, 1);
+                        stat[this.names[this.index - 1]].eated++;
+                        if(stat[this.names[i]].died){
+                            stat[this.names[i]].died++;
+                        }
                         break;
                     }
                 }
@@ -62,7 +65,8 @@ module.exports = class Amenaker extends Xotaker{
             for (var i in amenakerArr) {
                 if (amenakerArr[i].x == this.x && amenakerArr[i].y == this.y) {
                     amenakerArr.splice(i, 1);
-                    died[this.index]++;
+                    stat.amenaker.died++;
+                    stat.amenaker.count--;
                     matrix[this.y][this.x] = 0;
                     break;
                 }

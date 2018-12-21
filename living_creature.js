@@ -3,6 +3,7 @@ module.exports = class LivingCreature {
         this.x = x;
         this.y = y;
         this.multiply = 0;
+        this.names = ["grass","grassEater","gishatich","creater","amenaker"];
         this.index = index;
         this.directions = [
            [this.x - 1, this.y - 1],

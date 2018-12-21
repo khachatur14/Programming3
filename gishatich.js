@@ -18,7 +18,8 @@ module.exports = class Gishatich extends Xotaker{
             for (var i in xotakerArr) {
                 if (xotakerArr[i].x == this.x && xotakerArr[i].y == this.y) {
                     xotakerArr.splice(i, 1);
-                    eated[this.index]++;
+                    stat.gishatich.eated++;
+                    stat.grassEater.died++;
                     break;
                 }
             }
@@ -26,6 +27,17 @@ module.exports = class Gishatich extends Xotaker{
         }
         else {
             this.sharjvel();
+        }
+    }
+    mahanal() {
+        for (var i in gishatichArr) {
+            if (this.energy <= 0 && gishatichArr[i].x == this.x && gishatichArr[i].y == this.y) {
+                gishatichArr.splice(i, 1);
+                matrix[this.y][this.x] = 0;
+                stat.gishatich.died++;
+                stat.gishatich.count--;
+                break;
+            }
         }
     }
 }

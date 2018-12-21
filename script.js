@@ -10,7 +10,7 @@
 var side = 25;
 var socket = io();
 season = 1;
-statistica = [];
+statistica = {};
 
 function setup() {
     frameRate(5);
@@ -38,13 +38,11 @@ function drawMatrix(matrix) {
     }
     var li = document.getElementsByTagName("li");
     var names = ["","Grass","Grass Eater","Gishatich","Creater","Amenaker"];
+    var nameindex = ["grass","grassEater","gishatich","creater","amenaker"]
     for(var i = 0; i < li.length; i++){
-        var txt = "<b>"+names[i+1]+" </b> Count: " +count[i+1] + " | Died: " + statistica[0][i+1] + " | Created: " + statistica[1][i+1] + " | Multiplyed: " + statistica[2][i+1] + " | Eated: " + statistica[3][i+1];
+        var txt = "<b>"+names[i+1]+" </b> " + JSON.stringify(statistica[nameindex[i]]);
         li[i].innerHTML = txt;
     }
-}
-function cons(arr){
-    console.log(arr);
 }
 function setSeason(s){
     var color = ["green", "#aaee00", "#ffee00","#e0e0e0"]
