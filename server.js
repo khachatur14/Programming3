@@ -18,11 +18,13 @@ app.get('/', function (req, res) {
     res.redirect('index.html');
 });
 server.listen(3000);
-
+var season = 1;
 
 matrix = [];
 side = 25;
+
 function generateMatrix() {
+    matrix = [];
     for (var y = 0; y < side; y++) {
         matrix[y] = []
         for (var x = 0; x < side; x++) {
@@ -46,6 +48,13 @@ function generateMatrix() {
             matrix[Math.floor(Math.random() * matrix.length)][Math.floor(Math.random() * matrix[0].length)] = 4;
         }
     }
+
+    grassArr = [];
+    xotakerArr = [];
+    gishatichArr = [];
+    createrArr = [];
+    amenakerArr = [];
+
     for (var y = 0; y < matrix.length; y++) {
         for (x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 1) {
@@ -66,6 +75,10 @@ function generateMatrix() {
         }
     }
 }
+died = [0,0,0,0,0,0];
+created = [0,0,0,0,0,0];
+multiplyed = [0,0,0,0,0,0];
+eated = [0,0,0,0,0,0];
 
 Grass = require("./grass.js");
 Xotaker = require("./grass_eater.js");
@@ -81,8 +94,7 @@ amenakerArr = [];
 
 generateMatrix();
 
-
-io.on('connection', function () {
+io.on('connection', function (socket) {
     function drawServerayin() {
         for (var i in grassArr) {
             grassArr[i].bazmanal();
@@ -108,8 +120,19 @@ io.on('connection', function () {
             amenakerArr[i].mahanal();
         }
         io.sockets.emit("matrix", matrix);
-        io.sockets.emit("amenaker", amenakerArr);
+        io.sockets.emit("statistica", [died, created, multiplyed, eated]);
     }
-    //setInterval(generateMatrix, 30000);
-    setInterval(drawServerayin, 400);
+    function changeSeason(){
+        if(season == 4){
+            season = 1;
+        }
+        else{
+            season++;
+        }
+        io.sockets.emit("season", season);
+    }
+    socket.on("changeSeason", changeSeason);
+    setInterval(generateMatrix, 30000);
+    setInterval(changeSeason, 6000);
+    setInterval(drawServerayin, 600);
 })

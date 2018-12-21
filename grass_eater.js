@@ -28,6 +28,7 @@ module.exports = class Xotaker extends LivingCreature{
             var norx = norVandak[0];
             var nory = norVandak[1];
             matrix[nory][norx] = this.index;
+            multiplyed[this.index]++;
             var norXotaker = new Xotaker(norx, nory);
             xotakerArr.push(norXotaker);
             this.energy = 1;
@@ -49,6 +50,7 @@ module.exports = class Xotaker extends LivingCreature{
         var datarkVandakner = this.yntrelVandak(1);
         var norVandak = this.random(datarkVandakner);
         if (norVandak) {
+            eated[this.index]++;
             matrix[this.y][this.x] = 0;
             this.x = norVandak[0];
             this.y = norVandak[1];
@@ -69,6 +71,7 @@ module.exports = class Xotaker extends LivingCreature{
         for (var i in xotakerArr) {
             if (this.energy <= 0 && xotakerArr[i].x == this.x && xotakerArr[i].y == this.y) {
                 xotakerArr.splice(i, 1);
+                died[this.index]++;
                 matrix[this.y][this.x] = 0;
                 break;
             }

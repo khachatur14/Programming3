@@ -28,9 +28,11 @@ module.exports = class Amenaker extends Xotaker{
                 this.x = norVandak[0];
                 this.y = norVandak[1];
                 matrix[this.y][this.x] = 5;
-                for (var i in grassArr) {
-                    if (grassArr[i].x == this.x && grassArr[i].y == this.y) {
-                        grassArr.splice(i, 1);
+                var arr = [grassArr, xotakerArr, gishatichArr];
+                for (var j in arr[i]) {
+                    if (arr[i][j].x == this.x && arr[i][j].y == this.y) {
+                        arr.splice(i, 1);
+                        eated[this.index]++;
                         break;
                     }
                 }
@@ -60,6 +62,7 @@ module.exports = class Amenaker extends Xotaker{
             for (var i in amenakerArr) {
                 if (amenakerArr[i].x == this.x && amenakerArr[i].y == this.y) {
                     amenakerArr.splice(i, 1);
+                    died[this.index]++;
                     matrix[this.y][this.x] = 0;
                     break;
                 }

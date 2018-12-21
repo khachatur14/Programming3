@@ -18,6 +18,7 @@ module.exports = class Gishatich extends Xotaker{
             for (var i in xotakerArr) {
                 if (xotakerArr[i].x == this.x && xotakerArr[i].y == this.y) {
                     xotakerArr.splice(i, 1);
+                    eated[this.index]++;
                     break;
                 }
             }
