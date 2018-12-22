@@ -141,7 +141,7 @@ io.on('connection', function (socket) {
         stat.creater.creatingPower = arrEnergyCount(createrArr);
         io.sockets.emit("matrix", matrix);
         io.sockets.emit("statistica", stat);
-        fs.writeFileSync("statistica.json", JSON.stringify(stat));
+        fs.writeFileSync("statistica.json", JSON.stringify(stat, null, 3), );
     }
     function changeSeason(){
         if(season == 4){
@@ -152,8 +152,13 @@ io.on('connection', function (socket) {
         }
         io.sockets.emit("season", season);
     }
+    speed = 600;
     socket.on("changeSeason", changeSeason);
     socket.on("regenerate", generateMatrix);
+    socket.on("changeSpeed", function(data){
+        speed = data;
+        console.log(data);
+    })
     setInterval(changeSeason, 6000);
-    setInterval(drawServerayin, 600);
+    setInterval(drawServerayin, speed);
 })

@@ -1,1 +1,36 @@
-{"grass":{"count":178,"created":0,"hasEated":1838,"multiplyed":1893},"grassEater":{"count":25,"died":133,"created":8,"multiplyed":168,"eated":1752,"hasEated":102},"gishatich":{"count":0,"died":49,"created":46,"multiplyed":51,"eated":67,"hasEated":0},"creater":{"count":0,"died":2,"creatingPower":0},"amenaker":{"count":0,"died":15,"created":3,"multiplyed":24,"eated":127}}
+{
+   "grass": {
+      "count": 256,
+      "created": 0,
+      "hasEated": 151,
+      "multiplyed": 345
+   },
+   "grassEater": {
+      "count": 15,
+      "died": 8,
+      "created": 0,
+      "multiplyed": 5,
+      "eated": 114,
+      "hasEated": 36
+   },
+   "gishatich": {
+      "count": 2,
+      "died": 33,
+      "created": 31,
+      "multiplyed": 33,
+      "eated": 19,
+      "hasEated": 0
+   },
+   "creater": {
+      "count": 1,
+      "died": 1,
+      "creatingPower": 23
+   },
+   "amenaker": {
+      "count": 1,
+      "died": 11,
+      "created": 0,
+      "multiplyed": 14,
+      "eated": 56
+   }
+}

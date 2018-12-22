@@ -55,11 +55,11 @@ module.exports = class Xotaker extends LivingCreature{
             this.x = norVandak[0];
             this.y = norVandak[1];
             matrix[this.y][this.x] = 2;
-            stat.grassEater.eated++;
-            stat.grass.hasEated++;
             for (var i in grassArr) {
                 if (grassArr[i].x == this.x && grassArr[i].y == this.y) {
                     grassArr.splice(i, 1);
+                    stat.grassEater.eated++;
+                    stat.grass.hasEated++;
                     break;
                 }
             }
