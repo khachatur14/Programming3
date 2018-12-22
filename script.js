@@ -51,7 +51,6 @@ function setSeason(s){
 }
 document.getElementById("changeSeason").onclick = function(){socket.emit("changeSeason")};
 document.getElementById("generate").onclick = function(){socket.emit("regenerate")};
-document.getElementById("speed").oninput = function(){socket.emit("changeSpeed",this.value)}
 
 socket.on("matrix",drawMatrix);
 socket.on("statistica",getStatistica)

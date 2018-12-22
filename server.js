@@ -155,10 +155,6 @@ io.on('connection', function (socket) {
     speed = 600;
     socket.on("changeSeason", changeSeason);
     socket.on("regenerate", generateMatrix);
-    socket.on("changeSpeed", function(data){
-        speed = data;
-        console.log(data);
-    })
     setInterval(changeSeason, 6000);
-    setInterval(drawServerayin, speed);
+    setInterval(drawServerayin, 600);
 })
