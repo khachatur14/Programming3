@@ -19,7 +19,7 @@ module.exports = class Gishatich extends Xotaker{
                 if (xotakerArr[i].x == this.x && xotakerArr[i].y == this.y) {
                     xotakerArr.splice(i, 1);
                     stat.gishatich.eated++;
-                    stat.grassEater.died++;
+                    stat.grassEater.hasEated++;
                     break;
                 }
             }
@@ -35,7 +35,6 @@ module.exports = class Gishatich extends Xotaker{
                 gishatichArr.splice(i, 1);
                 matrix[this.y][this.x] = 0;
                 stat.gishatich.died++;
-                stat.gishatich.count--;
                 break;
             }
         }

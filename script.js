@@ -25,7 +25,7 @@ function drawMatrix(matrix) {
     var color = [
         ["#5e9657", "green","yellow","red","white","orange"],
         ["#80a86b", "#aaee00","yellow","red","white","orange"],
-        ["#bca969", "#ffee00","yellow","red","white","orange"],
+        ["#bca969", "#dd8800","yellow","red","white","orange"],
         ["#acacac", "#e0e0e0","yellow","red","white","orange"],
     ]
     for (var y = 0; y < 25; y++) {
@@ -45,13 +45,15 @@ function drawMatrix(matrix) {
     }
 }
 function setSeason(s){
-    var color = ["green", "#aaee00", "#ffee00","#e0e0e0"]
+    var color = ["green", "#aaee00", "#dd8800","#e0e0e0"]
     season = (s - 1);
     var sezon = ["spring", "summer","autumn","winter"];
     document.getElementById("grassLi").style.color = color[season];
     document.getElementById("timeOfSeason").innerHTML = "<b>Time of season</b>: " + sezon[season];
 }
 document.getElementById("changeSeason").onclick = function(){socket.emit("changeSeason")};
+document.getElementById("generate").onclick = function(){socket.emit("regenerate")};
+
 socket.on("matrix",drawMatrix);
 socket.on("statistica",getStatistica)
 socket.on("season", setSeason);

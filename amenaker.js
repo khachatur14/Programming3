@@ -33,8 +33,8 @@ module.exports = class Amenaker extends Xotaker{
                     if (arr[i][j].x == this.x && arr[i][j].y == this.y) {
                         arr[i].splice(i, 1);
                         stat[this.names[this.index - 1]].eated++;
-                        if(stat[this.names[i]].died){
-                            stat[this.names[i]].died++;
+                        if(stat[this.names[i]].hasEated){
+                            stat[this.names[i]].hasEated++;
                         }
                         break;
                     }
@@ -66,7 +66,6 @@ module.exports = class Amenaker extends Xotaker{
                 if (amenakerArr[i].x == this.x && amenakerArr[i].y == this.y) {
                     amenakerArr.splice(i, 1);
                     stat.amenaker.died++;
-                    stat.amenaker.count--;
                     matrix[this.y][this.x] = 0;
                     break;
                 }

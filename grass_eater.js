@@ -55,8 +55,8 @@ module.exports = class Xotaker extends LivingCreature{
             this.x = norVandak[0];
             this.y = norVandak[1];
             matrix[this.y][this.x] = 2;
-            stat[this.names[this.index - 1]].eated++;
-            stat.grass.died++;
+            stat.grassEater.eated++;
+            stat.grass.hasEated++;
             for (var i in grassArr) {
                 if (grassArr[i].x == this.x && grassArr[i].y == this.y) {
                     grassArr.splice(i, 1);
@@ -74,8 +74,7 @@ module.exports = class Xotaker extends LivingCreature{
             if (this.energy <= 0 && xotakerArr[i].x == this.x && xotakerArr[i].y == this.y) {
                 xotakerArr.splice(i, 1);
                 matrix[this.y][this.x] = 0;
-                stat[this.names[this.index - 1]].died++;
-                stat[this.names[this.index - 1]].count--;
+                stat.grassEater.died++;
                 break;
             }
         }

@@ -9,7 +9,6 @@ module.exports = class Grass extends LivingCreature{
             var nory = norVandak[1];
             matrix[nory][norx] = 1;
             var norXot = new Grass(norx, nory);
-            stat[this.names[0]].count++;
             stat[this.names[0]].multiplyed++;
             grassArr.push(norXot);
             this.multiply = 3;

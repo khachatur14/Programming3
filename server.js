@@ -1,12 +1,10 @@
-/*var matrix = [
-    [0, 2, 1, 0, 0],
-    [1, 0, 0, 3, 0],
-    [0, 1, 0, 0, 5],
-    [0, 0, 1, 0, 0],
-    [1, 1, 0, 2, 0],
-    [4, 1, 0, 0, 0],
-    [1, 1, 0, 0, 3]
-];*/
+/*
+---------------------------------------------------------------
+
+Github link  :  https://github.com/khachatur14/Programming3.git
+
+---------------------------------------------------------------
+*/
 
 var express = require('express');
 var app = express();
@@ -25,9 +23,8 @@ matrix = [];
 side = 25;
 
 stat = JSON.parse(fs.readFileSync("statistica.json").toString());
-
-function generateMatrix() {
-    var names = [["grass","grassEater","gishatich","creater","amenaker"],["count","created","died","multiplyed","eated"]];
+names = [["grass","grassEater","gishatich","creater","amenaker"],["count","created","died","multiplyed","eated","hasEated"]];
+function generateMatrix() { 
     for(var i in names[0]){
         for(var j in names[1])
         if(stat[names[0][i]][names[1][j]]){
@@ -90,10 +87,6 @@ function generateMatrix() {
         }
     }
 }
-// died = [0,0,0,0,0,0];
-// created = [0,0,0,0,0,0];
-// multiplyed = [0,0,0,0,0,0];
-// eated = [0,0,0,0,0,0];
 
 Grass = require("./grass.js");
 Xotaker = require("./grass_eater.js");
@@ -134,6 +127,18 @@ io.on('connection', function (socket) {
             amenakerArr[i].bazmanal();
             amenakerArr[i].mahanal();
         }
+        var lengths = [grassArr.length, xotakerArr.length, gishatichArr.length, createrArr.length, amenakerArr.length];
+        for(var i in lengths){
+            stat[names[0][i]].count = lengths[i];
+        }
+        function arrEnergyCount(arr){
+            var x = 0;
+            for(var i = 0; i < arr.length; i++){
+                x += arr[i].energy;
+            }
+            return x;
+        }
+        stat.creater.creatingPower = arrEnergyCount(createrArr);
         io.sockets.emit("matrix", matrix);
         io.sockets.emit("statistica", stat);
         fs.writeFileSync("statistica.json", JSON.stringify(stat));
@@ -148,7 +153,7 @@ io.on('connection', function (socket) {
         io.sockets.emit("season", season);
     }
     socket.on("changeSeason", changeSeason);
-    setInterval(generateMatrix, 30000);
+    socket.on("regenerate", generateMatrix);
     setInterval(changeSeason, 6000);
     setInterval(drawServerayin, 600);
 })
