@@ -141,7 +141,7 @@ io.on('connection', function (socket) {
         stat.creater.creatingPower = arrEnergyCount(createrArr);
         io.sockets.emit("matrix", matrix);
         io.sockets.emit("statistica", stat);
-        fs.writeFileSync("statistica.json", JSON.stringify(stat, null, 3), );
+        fs.writeFileSync("statistica.json", JSON.stringify(stat, null, 3));
     }
     function changeSeason(){
         if(season == 4){
